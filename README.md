@@ -1,63 +1,120 @@
-Telepítendő
-Node.js (LTS verzió -> legfrissebb) https://nodejs.org/en/
-Git: https://git-scm.com/downloads
-ajánlott IDE: Visual Studio Code https://code.visualstudio.com/
-Teendők
-GitHub regisztráció:https://github.com/
+# Projekt Telepítési és Fejlesztési Útmutató
 
-GitHub Repository (kb. kódbázist vagy projektet jelent) létrehozása https://github.com/new
+## 📦 Szükséges szoftverek telepítése
 
-SSH kulcs hozzáadása, így le/fel tudod tölteni a kódot https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account
+- **Node.js (LTS verzió – legfrissebb):**  
+  https://nodejs.org/en/
 
-A sorrend mindegy, csak a .git mappa a projekt mappájába kerüljön a végén.
+- **Git:**  
+  https://git-scm.com/downloads
 
-Kód letöltése powershell/parancssor(cmd)/ubuntu terminál segítségével
-git clone git@github.com:CserTibor/wakeboarding.git
-Létrehoz egy mappát, benne egy “.git” mappával
+- **Ajánlott IDE – Visual Studio Code:**  
+  https://code.visualstudio.com/
 
-Létrehozod a projektet
-npm create vite@latest
-belépsz a mappába és npm install
-elindítod a szervert: npm run dev
-http://127.0.0.1:5173/
-Button feladat
+---
 
-1. Component
-   Hozz létre egy components mappát az src alá
-   Készíts egy Button komponenst, aminek a paramétere a gombban megjelenő felirat legyen
-2. Function
-   Adj hozzá egy paramétert ami egy click eseménykezelő függvény
+## 🔧 Teendők (ezeket megcsináltam, neked nem kell)
 
-3. State management
-   Az App.jsx komponensben példányosítsd a Button komponenst: adj hozzá “Increase” és “Reduce” gombokat.
-   Az “Increase” state-ben eltárolt counter változó értékét növelje 1-el, a “Decrease” csökkentse.
-   A minimális érték 0 legyen, az “Decrease” gomb legyen disabled ezesetben.
-   A counter értéke jelenjen meg a felületen.
+1. **GitHub regisztráció:**  
+   https://github.com/
 
-Film feladat
+2. **GitHub repository létrehozása:**  
+   https://github.com/new  
+   (A repository a kódbázist vagy projektet jelenti.)
 
-1. Routing
-   Hozz létre egy új komponenst “Sandbox” néven, a Pages mappa alá. Helyezd át az App.jsx-ből a counter-hez kapcsolódó logikát és UI-t.
-   A Sandbox komponens a /sandbox útvonalra navigálva töltődjön be, az alapértelmezett route is ez legyen.
-   Hozz létre egy Navbar nevű komponens a components mappa alá, ahol a NavLink (react-router-dom) komponens felhasználásával megvalósítod a navigációt.
+3. **SSH kulcs hozzáadása a GitHub-hoz:**  
+   Így le/fel tudod tölteni a kódot.  
+   Útmutató:  
+   https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account
 
-2. List rendering
-   hozz létre új komponenst a pages mappa alá Movies néven. A komponensben listázd ki a movies.js fájlban található filmeket.
-   https://drive.google.com/file/d/1GtAOIYUPZc9o1b0_Y1tkIG54XOUAwkTa/view?usp=drive_link
-   add hozzá új Navlink-et (react-router-dom) az általad létrehozott Navbar komponenshez és vedd fel az új route-t: a /movies route-ra töltődjön be a komponens. A default route is ez legyen.
+> 💡 A sorrend nem számít, csak a `.git` mappa kerüljön a projekt gyökérkönyvtárába a végén.
 
-3. List manipulation
-   adj hozzá minden lista elemhez egy törlés gombot (használhatsz ikont, pl.: react-icons library)
-   a törlés gombra kattintva az adott sort töröld a listából
+---
 
-4. Input
-   adj hozzá szerkesztés gombot (vagy ikont) minden sorhoz
-   az adott sor szerkesztésére kattintva jeleníts meg egy input fieldet, aminek az értéke a kiválasztott film címe, illetve a mező mellett egy “Save” feliratú gombot
-   a kijelölt elem legyen kiemelve, kapjon valamilyen egyedi, jól megkülönböztethető stílust
-   a mentésre kattintva frissítsd a kiválasztott film címét az input mezőbe beírt értékkel és rejtsd el a formot a felületről.
-   a mentés gomb disabled legyen, ha a beírt érték üres
+## 📥 Kód letöltése
 
-5. Sorting
-   a lista felett jeleníts meg egy selectort-t, amiben 3 rendezési szempont legyen: alphabetical, rating, year.
-   a selector mellett jelenítse meg a rendezés irányát (ikonnal / szöveges). Az elemre kattintva a rendezés iránya megfordul
-   a default rendezés értékelés szerinti csökkenő legyen.
+PowerShell / CMD / Ubuntu terminál használatával:
+
+```bash
+git clone git@github.com:CserTibor/varga-bertalan-movie-app.git
+```
+
+A projekt mappájában:
+
+```bash
+npm install
+npm run dev
+```
+
+---
+
+## 🖱️ Button feladat
+
+### 1. Component
+
+- Hozz létre egy `components` mappát az `src` alá.
+- Készíts egy `Button` komponenst, amelynek paramétere a gomb szövege.
+
+### 2. Function
+
+- Adj hozzá egy `onClick` eseménykezelő paramétert.
+
+### 3. State management
+
+- Az `App.jsx`-ben példányosítsd a `Button` komponenst.
+- Hozz létre két gombot: **Increase** és **Decrease**.
+- A `counter` változót növeld vagy csökkentsd 1-gyel.
+- **Minimum érték:** `0` — a **Decrease** gomb legyen disabled, ha 0 az érték.
+- A `counter` értéke jelenjen meg a felületen.
+
+### 4. Extra feladat
+
+- Adj hozzá egy **Reset** gombot a felületen, amelyre kattintva a `counter` változó `0` lesz.
+
+---
+
+## 🎬 Film feladat
+
+### 1. Routing
+
+- React-Router dokumentáció: https://reactrouter.com/start/declarative/routing#configuring-routes
+- Hozz létre egy új komponenst `Sandbox` néven a `pages` mappában.
+- Helyezd át a `counter` logikát az `App.jsx`-ből ebbe.
+- A `/sandbox` útvonal töltse be ezt a komponenst.
+- Ez legyen az **alapértelmezett route**.
+- Hozz létre egy `Navbar` komponenst a `components` mappába.
+- Használj `NavLink`-et (`react-router-dom`) a navigációhoz.
+
+### 2. List rendering
+
+- Hozz létre új komponenst `Movies` néven a `pages` mappába.
+- Listázd ki a filmeket a megadott `movies.js` fájlból.
+  - /src/data/movies.js
+- Add hozzá új `NavLink`-et a `Navbar`-hoz.
+- A `/movies` route töltse be ezt a komponenst.
+- Ez legyen az **új alapértelmezett route**.
+
+### 3. List manipulation
+
+- Minden listaelemhez adj egy törlés gombot (pl. `react-icons` könyvtárral).
+- Törlés gombra kattintva töröld az adott sort a listából.
+
+### 4. Input
+
+- Adj hozzá egy szerkesztés gombot minden sorhoz.
+- Szerkesztésre jelenjen meg egy input mező az aktuális film címével és egy **Save** gomb.
+- A szerkesztett sor legyen kiemelve egyedi stílussal.
+- **Mentés** gombra:
+  - Frissítsd a címet.
+  - Rejtsd el az inputot.
+- A **Save** gomb legyen disabled, ha az input mező üres.
+
+### 5. Sorting
+
+- A lista felett legyen egy **selector**, amely rendezési szempontokat tartalmaz:
+  - `Alphabetical`
+  - `Rating`
+  - `Year`
+- A selector mellett jelenjen meg a rendezés iránya (ikon/szöveg).
+- Rákattintva forduljon meg a rendezés iránya.
+- **Alapértelmezett:** `Rating` szerinti csökkenő sorrend.
