@@ -118,3 +118,8 @@ npm run dev
 - A selector mellett jelenjen meg a rendezés iránya (ikon/szöveg).
 - Rákattintva forduljon meg a rendezés iránya.
 - **Alapértelmezett:** `Rating` szerinti csökkenő sorrend.
+
+
+
+
+### Megoldás: Varga Bertalan
