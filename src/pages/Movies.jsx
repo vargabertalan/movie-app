@@ -7,6 +7,8 @@ function Movies() {
   const [movieList, setMovieList] = useState(MOVIES);
   const [editingID, setEditingID] = useState(null);
   const [tempTitle, setTempTitle] = useState("");
+  const [sortBy, setSortBy] = useState("rating");
+  const [isAscending, setIsAscending] = useState(false);
 
   function handleRemove(id) {
     setMovieList(movieList.filter((movie) => movie.id !== id));
@@ -20,10 +22,42 @@ function Movies() {
     setEditingID(null);
   }
 
+  const sortedMovies = [...movieList].sort((a, b) => {
+    let result = 0;
+    if (sortBy === "alphabetical") {
+      result = a.title.localeCompare(b.title);
+    } else if (sortBy === "rating") {
+      result = a.rating - b.rating;
+    } else if (sortBy === "year") {
+      result = a.year - b.year;
+    }
+
+    // Ha csökkenő sorrend kell, megfordítjuk az eredményt
+    return isAscending ? result : -result;
+  });
+
   return (
     <div>
+      <div className="flex gap-4 mb-4 items-center">
+        <select
+          value={sortBy}
+          onChange={(e) => setSortBy(e.target.value)}
+          className="p-2 border rounded"
+        >
+          <option value="alphabetical">Alphabetical</option>
+          <option value="rating">Rating</option>
+          <option value="year">Year</option>
+        </select>
+
+        <button
+          onClick={() => setIsAscending(!isAscending)}
+          className="p-2 bg-gray-200 rounded"
+        >
+          {isAscending ? "⬆️ Ascending" : "⬇️ Descending"}
+        </button>
+      </div>
       <ul>
-        {movieList.map((movie) => (
+        {sortedMovies.map((movie) => (
           <li
             key={movie.id}
             className={editingID === movie.id ? "bg-yellow-100" : ""}
